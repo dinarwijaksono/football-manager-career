@@ -1,3 +1,197 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+
+    body {
+        @apply text-slate-700;
+    }
+
+    h1 {
+        @apply text-[24px];
+    }
+
+    h2 {
+        @apply text-[22px]
+    }
+
+    h3 {
+        @apply text-[20px]
+    }
+
+    a {
+        @apply text-sky-500 hover:text-sky-300
+    }
+
+}
+
+@layer components {
+
+    /* navbar */
+    nav {
+        @apply bg-green-600 p-2 px-10;
+    }
+
+    /* end navbar */
+
+
+    .content {
+        @apply flex;
+    }
+
+    /* aside */
+    .content aside {
+        @apply basis-2/12 bg-slate-800;
+    }
+
+    .content aside ul {
+        @apply mt-7;
+    }
+
+    .content aside ul li {
+        @apply text-zinc-200 p-2 border-l-4 border-slate-800 hover:border-green-600 hover:bg-slate-700;
+    }
+
+    .content aside ul li.active {
+        @apply text-zinc-200 p-2 border-green-600 bg-slate-700;
+    }
+
+    /* end aside */
+
+    .content div.wraper {
+        @apply basis-10/12
+    }
+
+
+    /* main */
+    .content div.wraper main {
+        @apply basis-10/12 min-h-screen relative
+    }
+
+    .content div.wraper main section.title {
+        @apply m-2;
+    }
+
+    .content div.wraper main section.box {
+        @apply bg-white rounded-sm m-2 shadow-md
+    }
+
+    .content main section.box .box-header {
+        @apply p-2;
+    }
+
+    .content div.wraper main section.box .box-body {
+        @apply p-2;
+    }
+
+    .content main section.box.box-scroll .box-body {
+        @apply max-h-72 overflow-scroll;
+    }
+
+    .content div.wraper main section.box.box-border div.box-body {
+        @apply border-y border-zinc-200
+    }
+
+    .content div.wraper main section.box div.box-footer {
+        @apply p-2;
+    }
+
+    .content div.wraper main div.row {
+        @apply flex gap-2;
+    }
+
+    .content main div.row section.col-4 {
+        @apply basis-4/12;
+    }
+
+    .content div.wraper main div.row section.col-6 {
+        @apply basis-6/12;
+    }
+
+
+    /* table */
+    .content div.wraper main table {
+        @apply w-full
+    }
+
+    .content div.wraper main table tr {
+        @apply border-b
+    }
+
+    .content div.wraper main table.table-hover tr {
+        @apply hover:bg-slate-100;
+    }
+
+    .content div.wraper main table.table-striped tbody tr {
+        @apply even:bg-slate-100;
+    }
+
+    .content div.wraper main table tr td {
+        @apply p-1
+    }
+
+    /* table */
+
+
+    /* button */
+    .content div.wraper main button.btn {
+        @apply px-5 py-1 bg-zinc-200
+    }
+
+    .content div.wraper main button.btn.btn-danger {
+        @apply px-5 py-1 bg-red-600 text-white
+    }
+
+    .content div.wraper main button.btn.btn-success {
+        @apply px-5 py-1 bg-green-600 text-white
+    }
+
+    .content div.wraper main button.btn.btn-sm {
+        @apply text-[12px]
+    }
+
+    /* end button */
+
+
+
+
+    /* form */
+    div.form-group {
+        @apply w-full mb-3
+    }
+
+    div.form-group input {
+        @apply border border-blue-300 w-full outline-none py-1 px-2
+    }
+
+    div.form-group p {
+        @apply text-[14px] italic
+    }
+
+    div.form-group p.danger {
+        @apply text-red-500
+    }
+
+    div.form-group p.primary {
+        @apply text-blue-400
+    }
+
+    div.form-group p.success {
+        @apply text-green-500
+    }
+
+    /* end form */
+
+    /* end main */
+
+
+
+    /* footer */
+    .content div.wraper footer {
+        @apply text-center bg-slate-800 text-white p-2 text-[15px]
+    }
+
+    /* end footer */
+}
