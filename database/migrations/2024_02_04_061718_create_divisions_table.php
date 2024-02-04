@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profile_id');
             $table->string('region');
+            $table->string('country');
             $table->string('name');
             $table->integer('level');
             $table->bigInteger('created_at');
