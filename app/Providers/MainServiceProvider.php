@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Service\ClubService;
 use App\Service\DivisionService;
 use App\Service\ProfileService;
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +20,10 @@ class MainServiceProvider extends ServiceProvider
 
         $this->app->singleton(DivisionService::class, function ($app) {
             return new DivisionService($app);
+        });
+
+        $this->app->singleton(ClubService::class, function ($app) {
+            return new ClubService($app);
         });
     }
 

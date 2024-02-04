@@ -24,12 +24,12 @@ class DivisionService
                 'region' => 'Asia',
                 'country' => 'Indonesia',
                 'name' => 'Indonesia liga 2',
-                'level' => 1,
+                'level' => 2,
                 'created_at' => round(microtime(true) * 1000),
                 'updated_at' => round(microtime(true) * 1000),
             ]
         ]);
 
-        Log::info('make a log success', ['profile_id' => $profileId]);
+        Log::info('make a lot the division success', ['profile_id' => $profileId]);
     }
 }
