@@ -21,3 +21,11 @@ Artisan::command('inspire', function () {
 Artisan::command('tailwind-start', function () {
     system("npx tailwind -i ./resources/css/app.css -o ./public/asset/tailwind/style.css --watch ");
 });
+
+Artisan::command('migrate:fresh-test', function () {
+
+    config(['database.default' => 'mysql-test']);
+    Artisan::call('migrate:fresh');
+
+    $this->comment("Berhasil....");
+});
