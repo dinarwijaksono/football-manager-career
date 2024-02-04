@@ -14,4 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home_controller
 Route::get('/', [HomeController::class, 'index']);
+
+ROute::get('/Home/new-profile', [HomeController::class, 'newProfile']);
+/*  end Home_controller */

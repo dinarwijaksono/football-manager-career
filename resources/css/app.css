@@ -136,19 +136,19 @@
 
 
     /* button */
-    .content div.wraper main button.btn {
+    button.btn {
         @apply px-5 py-1 bg-zinc-200
     }
 
-    .content div.wraper main button.btn.btn-danger {
+     button.btn.btn-danger {
         @apply px-5 py-1 bg-red-600 text-white
     }
 
-    .content div.wraper main button.btn.btn-success {
+    button.btn.btn-success {
         @apply px-5 py-1 bg-green-600 text-white
     }
 
-    .content div.wraper main button.btn.btn-sm {
+    button.btn.btn-sm {
         @apply text-[12px]
     }
 

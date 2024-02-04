@@ -10,4 +10,10 @@ class HomeController extends Controller
     {
         return view('/Home/index');
     }
+
+
+    public function newProfile()
+    {
+        return view('/Home/new-profile');
+    }
 }

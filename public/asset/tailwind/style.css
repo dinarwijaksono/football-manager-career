@@ -718,7 +718,7 @@ nav {
 
 /* button */
 
-.content div.wraper main button.btn {
+button.btn {
   --tw-bg-opacity: 1;
   background-color: rgb(228 228 231 / var(--tw-bg-opacity));
   padding-left: 1.25rem;
@@ -727,7 +727,7 @@ nav {
   padding-bottom: 0.25rem;
 }
 
-.content div.wraper main button.btn.btn-danger {
+button.btn.btn-danger {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
   padding-left: 1.25rem;
@@ -738,7 +738,7 @@ nav {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.content div.wraper main button.btn.btn-success {
+button.btn.btn-success {
   --tw-bg-opacity: 1;
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
   padding-left: 1.25rem;
@@ -749,13 +749,51 @@ nav {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.content div.wraper main button.btn.btn-sm {
+button.btn.btn-sm {
   font-size: 12px;
 }
 
 /* end button */
 
 /* form */
+
+div.form-group {
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+div.form-group input {
+  width: 100%;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(147 197 253 / var(--tw-border-opacity));
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+div.form-group p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+div.form-group p.danger {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+div.form-group p.primary {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+div.form-group p.success {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
 
 /* end form */
 
@@ -779,30 +817,6 @@ nav {
   position: absolute;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
-.left-0 {
-  left: 0px;
-}
-
-.right-0 {
-  right: 0px;
-}
-
-.top-0 {
-  top: 0px;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
-.top-10 {
-  top: 2.5rem;
-}
-
 .right-20 {
   right: 5rem;
 }
@@ -811,32 +825,56 @@ nav {
   top: 3rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
   display: flex;
 }
 
-.w-64 {
-  width: 16rem;
-}
-
-.w-96 {
-  width: 24rem;
-}
-
-.w-\[200px\] {
-  width: 200px;
-}
-
 .w-\[500px\] {
   width: 500px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.basis-10\/12 {
+  flex-basis: 83.333333%;
+}
+
+.basis-2\/12 {
+  flex-basis: 16.666667%;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .rounded {
@@ -847,24 +885,14 @@ nav {
   border-width: 1px;
 }
 
-.bg-green-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
 .bg-green-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 
-.bg-green-300 {
+.bg-red-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
-}
-
-.bg-slate-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .bg-slate-100 {
@@ -872,18 +900,13 @@ nav {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
-.bg-slate-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
-}
-
-.bg-green-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-
 .p-2 {
   padding: 0.5rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .text-center {
@@ -894,9 +917,9 @@ nav {
   font-weight: 700;
 }
 
-.text-black {
+.text-red-500 {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -910,18 +933,9 @@ nav {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.hover\:bg-green-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
 }
 
 .hover\:underline:hover {

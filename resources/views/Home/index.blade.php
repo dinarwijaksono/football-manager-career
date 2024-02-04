@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.home-layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FMC</title>
-
-    <link rel="stylesheet" href="/asset/tailwind/style.css">
-
-</head>
-
-<body>
-
+@section('main')
     <main class="border w-[500px] absolute top-12 right-20 bg-slate-100 shadow-md">
 
         <section class="p-2">
@@ -33,7 +21,4 @@
         </section>
 
     </main>
-
-</body>
-
-</html>
+@endsection
