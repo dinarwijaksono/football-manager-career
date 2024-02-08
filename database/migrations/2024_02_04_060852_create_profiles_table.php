@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name', 30);
+            $table->foreignId('managed_club')->nullable();
             $table->bigInteger('created_at');
             $table->bigInteger('updated_at');
         });

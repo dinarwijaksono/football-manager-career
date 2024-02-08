@@ -13,6 +13,7 @@ class ProfileService
     {
         $id = Profile::insertGetId([
             'name' => $name,
+            'managed_club' => null,
             'created_at' => round(microtime(true) * 1000),
             'updated_at' => round(microtime(true) * 1000),
         ]);

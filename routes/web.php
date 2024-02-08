@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Home_controller
 Route::get('/', [HomeController::class, 'index']);
 
-ROute::get('/Home/new-profile', [HomeController::class, 'newProfile']);
+Route::get('/Home/new-profile', [HomeController::class, 'newProfile']);
+
+Route::get('/Home/select-club', [HomeController::class, 'selectClub']);
 /*  end Home_controller */

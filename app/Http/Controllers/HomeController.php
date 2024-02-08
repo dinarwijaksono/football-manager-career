@@ -16,4 +16,10 @@ class HomeController extends Controller
     {
         return view('/Home/new-profile');
     }
+
+
+    public function selectClub()
+    {
+        return view('/Home/select-club');
+    }
 }

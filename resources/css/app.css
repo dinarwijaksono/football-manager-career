@@ -148,6 +148,10 @@
         @apply px-5 py-1 bg-green-600 text-white
     }
 
+    button.btn.btn-primary {
+        @apply px-5 py-1 bg-blue-500 text-white;
+    }
+
     button.btn.btn-sm {
         @apply text-[12px]
     }
