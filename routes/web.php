@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\FmcController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\OnlySessionHasMiddleware;
+use App\Http\Middleware\OnlySessionMissingMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +19,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Home_controller
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware(OnlySessionMissingMiddleware::class);
 
-Route::get('/Home/new-profile', [HomeController::class, 'newProfile']);
+Route::get('/Home/new-profile', [HomeController::class, 'newProfile'])->middleware(OnlySessionMissingMiddleware::class);
 
-Route::get('/Home/select-club', [HomeController::class, 'selectClub']);
 /*  end Home_controller */
+
+/* Profile_controller */
+Route::get('/Profile/select-club', [ProfileController::class, 'selectClub'])->middleware(OnlySessionHasMiddleware::class);
+
+/* end Profile_controller */
+
+/* FmcController */
+Route::get('/FMC', [FmcController::class, 'index'])->middleware(OnlySessionHasMiddleware::class);
+/* end FmcController */

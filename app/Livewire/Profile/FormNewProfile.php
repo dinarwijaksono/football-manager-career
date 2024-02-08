@@ -47,9 +47,17 @@ class FormNewProfile extends Component
             $this->divisionService->makeALot($profileId);
             $this->clubService->makeALot($profileId);
 
-            Log::info('create profile success', ['profile_name' => $this->name, 'path' => 'FormNewProfile livewire class']);
+            session()->put('profile_id', $profileId);
+
+            Log::info('create profile success', [
+                'profile_id' => $profileId,
+                'profile_name' => $this->name,
+                'path' => 'App\Livewire\Profile\FormNewProfile'
+            ]);
 
             DB::commit();
+
+            return redirect('/Profile/select-club');
         } catch (\Throwable $th) {
 
             DB::rollBack();

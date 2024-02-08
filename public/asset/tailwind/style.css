@@ -824,6 +824,10 @@ div.form-group p.success {
 
 /* end footer */
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
