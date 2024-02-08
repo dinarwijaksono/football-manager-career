@@ -23,7 +23,7 @@ class FormNewProfileTest extends TestCase
     public function test_doCreateProfile_validateError()
     {
         Livewire::test(FormNewProfile::class)
-            ->set('name', "te")
+            ->set('name', "dd")
             ->call("doCreateProfile")
             ->assertHasErrors('name');
 

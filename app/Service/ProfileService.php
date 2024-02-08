@@ -22,4 +22,22 @@ class ProfileService
 
         return $id;
     }
+
+    public function getTheList(): object
+    {
+        $profiles = Profile::select(
+            'id',
+            'name',
+            'managed_club',
+            'created_at',
+            'updated_at'
+        )->orderBy('created_at')
+            ->get();
+
+        Log::info('get the list success', [
+            'path' => "App/Service/ProfileService"
+        ]);
+
+        return $profiles;
+    }
 }

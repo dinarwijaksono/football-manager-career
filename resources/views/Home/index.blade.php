@@ -13,7 +13,7 @@
                     </li>
                 </a>
 
-                <a href="/Home/load-profile">
+                <a href="/Profile/load-profile">
                     <li class="bg-green-600 p-2 rounded mb-2 text-white hover:underline hover:bg-green-500">Muat profile
                     </li>
                 </a>

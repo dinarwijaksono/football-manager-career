@@ -28,6 +28,7 @@ Route::get('/Home/new-profile', [HomeController::class, 'newProfile'])->middlewa
 /* Profile_controller */
 Route::get('/Profile/select-club', [ProfileController::class, 'selectClub'])->middleware(OnlySessionHasMiddleware::class);
 
+Route::get('/Profile/load-profile', [ProfileController::class, 'loadProfile'])->middleware(OnlySessionMissingMiddleware::class);
 /* end Profile_controller */
 
 /* FmcController */

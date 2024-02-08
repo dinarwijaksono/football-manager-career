@@ -3,6 +3,7 @@
 namespace Tests\Feature\service;
 
 use App\Service\ProfileService;
+use Database\Seeders\ProfileSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -29,5 +30,21 @@ class ProfileServiceTest extends TestCase
             'id' => $response,
             'name' => $name
         ]);
+    }
+
+    public function test_getTheList()
+    {
+        $this->seed(ProfileSeeder::class);
+        $this->seed(ProfileSeeder::class);
+        $this->seed(ProfileSeeder::class);
+        $this->seed(ProfileSeeder::class);
+        $this->seed(ProfileSeeder::class);
+
+        $response = $this->profileService->getTheList();
+
+        $this->assertIsObject($response);
+
+        $response = collect($response);
+        $this->assertEquals(5, $response->count());
     }
 }

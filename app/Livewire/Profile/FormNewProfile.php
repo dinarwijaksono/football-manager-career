@@ -37,10 +37,12 @@ class FormNewProfile extends Component
 
     public function doCreateProfile()
     {
+        $this->validate();
+
         try {
             DB::beginTransaction();
 
-            $validate = $this->validate();
+            $this->validate();
 
             $profileId = $this->profileService->create($this->name);
             $this->dateRunService->create($profileId);
