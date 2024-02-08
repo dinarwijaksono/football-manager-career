@@ -4,6 +4,7 @@ namespace Tests\Feature\service;
 
 use App\Models\Profile;
 use App\Service\ProfileService;
+use Database\Seeders\ProfilePerfectSeed;
 use Database\Seeders\ProfileSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -32,6 +33,20 @@ class ProfileServiceTest extends TestCase
             'name' => $name
         ]);
     }
+
+
+    public function test_getById()
+    {
+        $this->seed(ProfilePerfectSeed::class);
+
+        $profile = Profile::select('*')->where('name', 'test')->first();
+
+        $response = $this->profileService->getById($profile->id);
+
+        $this->assertIsObject($response);
+        $this->assertEquals($response->name, $profile->name);
+    }
+
 
     public function test_getTheList()
     {

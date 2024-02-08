@@ -9,7 +9,8 @@
                         wire:click="doDelete('{{ $profile->id }}')">Hapus</button>
                 </td>
                 <td class="p-1 basis-2/12">
-                    <button class="btn btn-primary w-full btn-sm rounded">Mainkan</button>
+                    <button class="btn btn-primary w-full btn-sm rounded"
+                        wire:click="doCreateSession('{{ $profile->id }}')">Mainkan</button>
                 </td>
             </tr>
         @endforeach

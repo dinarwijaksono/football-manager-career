@@ -64,6 +64,16 @@ class TableTheListProfile extends Component
         }
     }
 
+    public function doCreateSession(int $profileId)
+    {
+        $profile = $this->profileService->getById($profileId);
+
+        session()->put('profile_id', $profile->id);
+        session()->put('profile_name', $profile->name);
+
+        return redirect('/FMC');
+    }
+
     public function render()
     {
         return view('livewire.profile.table-the-list-profile');

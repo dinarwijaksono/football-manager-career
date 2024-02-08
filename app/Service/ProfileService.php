@@ -5,6 +5,7 @@ namespace App\Service;
 use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class ProfileService
 {
@@ -22,6 +23,22 @@ class ProfileService
 
         return $id;
     }
+
+
+    public function getById(int $profileId): Object
+    {
+        $profile = Profile::select('id', 'name', 'managed_club', 'created_at', 'updated_at')
+            ->where('id', $profileId)
+            ->first();
+
+        Log::info('get by id success', [
+            'profile_id' => $profileId,
+            'path' => "App\Service\ProfileService"
+        ]);
+
+        return $profile;
+    }
+
 
     public function getTheList(): object
     {

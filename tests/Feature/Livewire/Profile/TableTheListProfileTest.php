@@ -48,4 +48,19 @@ class TableTheListProfileTest extends TestCase
         $this->assertDatabaseMissing('divisions', ['profile_id' => $profile->id]);
         $this->assertDatabaseMissing('clubs', ['profile_id' => $profile->id]);
     }
+
+
+    public function test_doCreateSession()
+    {
+        $this->seed(ProfilePerfectSeed::class);
+
+        $profile = Profile::select('*')->where('name', 'test')->first();
+
+        Livewire::test(TableTheListProfile::class)
+            ->call('doCreateSession', $profile->id)
+            ->assertRedirect('/FMC');
+
+        $this->assertEquals('test', session()->get('profile_name'));
+        $this->assertEquals($profile->id, session()->get('profile_id'));
+    }
 }
