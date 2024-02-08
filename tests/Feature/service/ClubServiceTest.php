@@ -40,4 +40,19 @@ class ClubServiceTest extends TestCase
 
         $this->assertDatabaseCount('clubs', 44);
     }
+
+
+    public function test_getClubs()
+    {
+        $profileId = session()->get('profileId');
+
+        $this->clubService->makeALot($profileId);
+
+        $response = $this->clubService->getClubs($profileId);
+
+        $this->assertIsObject($response);
+
+        $clubs = collect($response);
+        $this->assertTrue($clubs->isNotEmpty());
+    }
 }

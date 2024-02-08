@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Models\Club;
 use App\Models\Division;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ClubService
@@ -54,5 +55,27 @@ class ClubService
         Club::insert($clubs->toArray());
 
         Log::info('Make a lot the club success', ['profile_id' => $profileId]);
+    }
+
+    public function getClubs(int $profileId): object
+    {
+        $club = DB::table('clubs')
+            ->join('divisions', 'divisions.id', '=', 'clubs.division_id')
+            ->select(
+                'clubs.id',
+                'clubs.name',
+                'clubs.division_id',
+                'divisions.region',
+                'divisions.country',
+                'divisions.name as division_name',
+                'divisions.level'
+            )
+            ->where('clubs.profile_id', $profileId)
+            ->orderBy('divisions.level')
+            ->get();
+
+        Log::info('Get clubs success', ['profile_id' => $profileId, 'path' => 'App/Service/ClubService']);
+
+        return $club;
     }
 }
