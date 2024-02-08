@@ -53,6 +53,6 @@ class ClubService
 
         Club::insert($clubs->toArray());
 
-        Log::info('Make a lot the club success', ['profile_id' => $profileId, 'data' => $clubs]);
+        Log::info('Make a lot the club success', ['profile_id' => $profileId]);
     }
 }
