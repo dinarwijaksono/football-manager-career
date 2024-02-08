@@ -78,4 +78,16 @@ class ClubService
 
         return $club;
     }
+
+
+    public function delete(int $profileId): void
+    {
+        Club::where('profile_id', $profileId)
+            ->delete();
+
+        Log::info("delete Club success", [
+            'profile_id' => $profileId,
+            'path' => "App/Service/ClubService"
+        ]);
+    }
 }

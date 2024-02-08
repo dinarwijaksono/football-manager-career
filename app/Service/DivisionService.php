@@ -30,6 +30,20 @@ class DivisionService
             ]
         ]);
 
-        Log::info('make a lot the division success', ['profile_id' => $profileId]);
+        Log::info('make a lot the division success', [
+            'profile_id' => $profileId,
+            'path' => "App/Service/DivisionService"
+        ]);
+    }
+
+
+    public function delete(int $profileId)
+    {
+        Division::where('profile_id', $profileId)->delete();
+
+        Log::info('delete division success', [
+            'profile_id' => $profileId,
+            'path' => "App/Service/DivisionService"
+        ]);
     }
 }

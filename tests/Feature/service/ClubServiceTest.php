@@ -55,4 +55,23 @@ class ClubServiceTest extends TestCase
         $clubs = collect($response);
         $this->assertTrue($clubs->isNotEmpty());
     }
+
+
+    public function test_delete()
+    {
+        $profileId = session()->get('profileId');
+
+        $this->clubService->makeALot($profileId);
+
+        $this->assertDatabaseCount('clubs', 44);
+        $this->assertDatabaseHas('clubs', [
+            'profile_id' => $profileId
+        ]);
+
+        $this->clubService->delete($profileId);
+
+        $this->assertDatabaseMissing('clubs', [
+            'profile_id' => $profileId
+        ]);
+    }
 }

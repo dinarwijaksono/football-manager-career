@@ -40,4 +40,15 @@ class ProfileService
 
         return $profiles;
     }
+
+
+    public function delete(int $profileId): void
+    {
+        Profile::where('id', $profileId)->delete();
+
+        Log::info('delete profile success', [
+            'profileId' => $profileId,
+            'path' => "App/Service/ProfileService"
+        ]);
+    }
 }

@@ -48,4 +48,33 @@ class DivisionServiceTest extends TestCase
             'name' => 'Indonesia liga 2',
         ]);
     }
+
+
+    public function test_delete()
+    {
+        $profileId = session()->get('profileId');
+
+        $this->divisionService->makeALot($profileId);
+
+        $this->assertDatabaseHas('divisions', [
+            'profile_id' => $profileId,
+            'region' => 'Asia',
+            'country' => 'Indonesia',
+            'name' => 'Indonesia Super liga'
+        ]);
+
+        $this->assertDatabaseHas('divisions', [
+            'profile_id' => $profileId,
+            'region' => 'Asia',
+            'country' => 'Indonesia',
+            'name' => 'Indonesia liga 2',
+        ]);
+
+
+        $this->divisionService->delete($profileId);
+
+        $this->assertDatabaseMissing('divisions', [
+            'profile_id' => $profileId
+        ]);
+    }
 }

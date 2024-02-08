@@ -38,4 +38,22 @@ class DateRunServiceTest extends TestCase
             'date' => mktime(0, 0, 0, 1, 1, 2000)
         ]);
     }
+
+    public function test_delete()
+    {
+        $profileId = session()->get('profileId');
+
+        $this->dateRunService->create($profileId);
+
+        $this->assertDatabaseHas('date_runs', [
+            'profile_id' => $profileId,
+            'date' => mktime(0, 0, 0, 1, 1, 2000)
+        ]);
+
+        $this->dateRunService->delete($profileId);
+
+        $this->assertDatabaseMissing('date_runs', [
+            'profile_id' => $profileId
+        ]);
+    }
 }

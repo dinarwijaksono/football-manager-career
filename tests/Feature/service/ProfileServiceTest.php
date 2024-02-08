@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\service;
 
+use App\Models\Profile;
 use App\Service\ProfileService;
 use Database\Seeders\ProfileSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -46,5 +47,23 @@ class ProfileServiceTest extends TestCase
 
         $response = collect($response);
         $this->assertEquals(5, $response->count());
+    }
+
+    public function test_delete()
+    {
+        $this->seed(ProfileSeeder::class);
+
+        $this->assertDatabaseHas('profiles', [
+            'name' => 'test'
+        ]);
+
+        $profile = Profile::select('*')->where('name', 'test')->first();
+
+        $this->profileService->delete($profile->id);
+
+        $this->assertDatabaseMissing('profiles', [
+            'id' => $profile->id,
+            'name' => 'test'
+        ]);
     }
 }

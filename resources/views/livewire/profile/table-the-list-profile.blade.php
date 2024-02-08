@@ -5,7 +5,8 @@
                 <td class="p-1 basis-4/12 pl-2">{{ $profile->name }}</td>
                 <td class="p-1 basis-4/12 text-center">{{ date('H:i -- j F Y', $profile->created_at / 1000) }}</td>
                 <td class="p-1 basis-2/12">
-                    <button class="btn btn-danger rounded btn-sm w-full">Hapus</button>
+                    <button class="btn btn-danger rounded btn-sm w-full"
+                        wire:click="doDelete('{{ $profile->id }}')">Hapus</button>
                 </td>
                 <td class="p-1 basis-2/12">
                     <button class="btn btn-primary w-full btn-sm rounded">Mainkan</button>

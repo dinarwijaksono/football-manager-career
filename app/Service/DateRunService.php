@@ -18,4 +18,16 @@ class DateRunService
 
         Log::info('create date run success', ['profile_id' => $profileId]);
     }
+
+
+    public function delete(int $profileId)
+    {
+        DateRun::where('profile_id', $profileId)
+            ->delete();
+
+        Log::info('delete date run success', [
+            'profile_id' => $profileId,
+            'path' => "App/Service/DateRunService"
+        ]);
+    }
 }
