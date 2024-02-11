@@ -21,13 +21,10 @@ class FmcController extends Controller
     {
         $profile = $this->profileService->getById(session()->get('profile_id'));
 
-        if (isNull($profile->managed_club)) {
+        if ($profile->managed_club === NULL) {
             return redirect("/Profile/select-club");
         }
 
-        if (!isNull($profile->managed_club)) {
-            return redirect("/FMC");
-        }
 
         return "Halaman fmc/index";
     }

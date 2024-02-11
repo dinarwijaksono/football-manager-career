@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\service;
 
+use App\Models\Club;
 use App\Models\Profile;
 use App\Service\ProfileService;
 use Database\Seeders\ProfilePerfectSeed;
@@ -66,6 +67,38 @@ class ProfileServiceTest extends TestCase
         $response = collect($response);
         $this->assertEquals(5, $response->count());
     }
+
+    public function test_updateManagedClub_failed_ProfileIdAndClubIdEmptyInDB()
+    {
+        $this->seed(ProfilePerfectSeed::class);
+
+        $profile = Profile::select('*')->where('name', 'test')->first();
+
+        $this->profileService->updateManagedClub($profile->id, 9999999);
+
+        $profile2 = Profile::select('*')->where('name', 'test')->first();
+
+        $this->assertNull($profile2->managed_club);
+    }
+
+
+    public function test_updateManagedClub_success()
+    {
+        $this->seed(ProfilePerfectSeed::class);
+
+        $profile = Profile::select('*')->where('name', 'test')->first();
+
+        $clubs = Club::select('*')->where('profile_id', $profile->id)->first();
+
+        $this->profileService->updateManagedClub($profile->id, $clubs->id);
+
+        $profile2 = Profile::select('*')->where('name', 'test')->first();
+
+        $this->assertNull($profile->managed_club);
+        $this->assertEquals($profile2->managed_club, $clubs->id);
+    }
+
+
 
     public function test_delete()
     {

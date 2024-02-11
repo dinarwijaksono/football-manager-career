@@ -98,6 +98,7 @@ class ClubService
                 )
                 ->where('clubs.profile_id', $profileId)
                 ->orderBy('divisions.level')
+                ->orderBy('clubs.id')
                 ->get();
 
             Log::info('Get the list clubs success', [

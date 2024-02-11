@@ -6,7 +6,8 @@
                 <td class="basis-6/12">{{ $key->name }}</td>
                 <td class="basis-3/12 text-center">{{ $key->division_name }} </td>
                 <th class="basis-3/12">
-                    <button class="btn btn-primary rounded w-full">Pilih</button>
+                    <button type="button" wire:click="doSelectClub({{ $key->id }})"
+                        class="btn btn-primary rounded w-full">Pilih</button>
                 </th>
             </tr>
         @endforeach

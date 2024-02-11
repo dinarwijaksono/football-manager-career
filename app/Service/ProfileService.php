@@ -2,10 +2,12 @@
 
 namespace App\Service;
 
+use App\Models\Club;
 use App\Models\Profile;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use PhpParser\Node\Expr\Cast\Object_;
+
 
 class ProfileService
 {
@@ -33,10 +35,6 @@ class ProfileService
             ->where('profiles.id', $profileId)
             ->first();
 
-        // $profile = Profile::select('id', 'name', 'managed_club', 'created_at', 'updated_at')
-        //     ->where('id', $profileId)
-        //     ->first();
-
         Log::info('get by id success', [
             'profile_id' => $profileId,
             'path' => "App\Service\ProfileService"
@@ -62,6 +60,43 @@ class ProfileService
         ]);
 
         return $profiles;
+    }
+
+
+    // update
+    public function updateManagedClub(int $profileId, int $clubId): void
+    {
+        try {
+
+            // cek apakah profileId ada di database
+            $profile = Profile::select('id')->where('id', $profileId)->get();
+            if ($profile->isEmpty()) {
+                throw new Exception("profileId tidak ada di database", 1);
+            }
+
+            // cek apakah clubId ada di database
+            $club = Club::select('id')->where('profile_id', $profileId)->where('id', $clubId)->get();
+            if ($club->isEmpty()) {
+                throw new Exception("ClubId dengan profile club tidak ada di database", 1);
+            }
+
+            Profile::where('id', $profileId)->update([
+                "managed_club" => $clubId,
+                "updated_at" => round(microtime(true) * 1000)
+            ]);
+
+            Log::info("update managed club success", [
+                'profile_id' => $profileId,
+                'path' => "App\Service\ProfileService"
+            ]);
+        } catch (\Throwable $th) {
+
+            Log::error("update managed club failed", [
+                'profile_id' => $profileId,
+                'path' => "App\Service\ProfileService",
+                'message' => $th->getMessage()
+            ]);
+        }
     }
 
 
