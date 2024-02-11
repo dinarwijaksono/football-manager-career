@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\ProfileService;
-use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\isNull;
 
 class FmcController extends Controller
 {
@@ -25,7 +23,6 @@ class FmcController extends Controller
             return redirect("/Profile/select-club");
         }
 
-
-        return "Halaman fmc/index";
+        return view("/Fmc/index");
     }
 }
