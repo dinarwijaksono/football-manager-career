@@ -30,8 +30,18 @@ class ProfileService
     public function getById(int $profileId): Object
     {
         $profile = DB::table('profiles')
+            ->join('date_runs', 'date_runs.profile_id', '=', 'profiles.id')
             ->leftJoin('clubs', 'profiles.managed_club', '=', 'clubs.id')
-            ->select('profiles.id', 'profiles.name', 'profiles.managed_club', 'clubs.division_id', 'clubs.name as club_name', 'profiles.created_at', 'profiles.updated_at')
+            ->select(
+                'profiles.id',
+                'profiles.name',
+                'profiles.managed_club',
+                'date_runs.date',
+                'clubs.division_id',
+                'clubs.name as club_name',
+                'profiles.created_at',
+                'profiles.updated_at'
+            )
             ->where('profiles.id', $profileId)
             ->first();
 

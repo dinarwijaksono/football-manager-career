@@ -49,6 +49,9 @@ class ProfileServiceTest extends TestCase
         $this->assertIsObject($response);
         $this->assertEquals($response->name, $profile->name);
         $this->assertEquals($response->managed_club, $profile->managed_club);
+        $this->assertObjectHasProperty('name', $response);
+        $this->assertObjectHasProperty('date', $response);
+        $this->assertObjectHasProperty('club_name', $response);
     }
 
 
