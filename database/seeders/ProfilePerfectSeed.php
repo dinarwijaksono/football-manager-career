@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use App\Service\ClubService;
 use App\Service\DateRunService;
 use App\Service\DivisionService;
@@ -23,7 +24,16 @@ class ProfilePerfectSeed extends Seeder
         $divisionService = App::make(DivisionService::class);
         $clubService = App::make(ClubService::class);
 
-        $profileId = $profileService->create('test');
+        $profile = Profile::select('*')->where('name', 'test')->get();
+        $profile = collect($profile);
+
+        if ($profile->isEmpty()) {
+            $profileId = $profileService->create('test');
+        } else {
+            $profile = Profile::select('*')->where('name', 'test')->first();
+            $profileId = $profile->id;
+        }
+
         $dateRunService->create($profileId);
         $divisionService->makeALot($profileId);
         $clubService->makeALot($profileId);

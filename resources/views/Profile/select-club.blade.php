@@ -31,21 +31,7 @@
                 </section>
 
                 <section>
-                    <table style="width: 850px">
-                        <tbody>
-
-                            @for ($i = 0; $i < 5; $i++)
-                                <tr class="p-1 bg-green-100 shadow flex mb-2">
-                                    <td class="basis-6/12">nama club</td>
-                                    <td class="basis-3/12 text-center">1</td>
-                                    <th class="basis-3/12">
-                                        <button class="btn btn-primary rounded w-full">Pilih</button>
-                                    </th>
-                                </tr>
-                            @endfor
-
-                        </tbody>
-                    </table>
+                    @livewire('club.table-the-list-club')
                 </section>
 
             </main>

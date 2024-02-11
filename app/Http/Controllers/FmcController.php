@@ -25,6 +25,10 @@ class FmcController extends Controller
             return redirect("/Profile/select-club");
         }
 
+        if (!isNull($profile->managed_club)) {
+            return redirect("/FMC");
+        }
+
         return "Halaman fmc/index";
     }
 }

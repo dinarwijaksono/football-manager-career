@@ -5,6 +5,7 @@ namespace Tests\Feature\service;
 use App\Models\Profile;
 use App\Service\ClubService;
 use App\Service\DivisionService;
+use Database\Seeders\ProfilePerfectSeed;
 use Database\Seeders\ProfileSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -54,6 +55,24 @@ class ClubServiceTest extends TestCase
 
         $clubs = collect($response);
         $this->assertTrue($clubs->isNotEmpty());
+    }
+
+
+    public function test_getTheList()
+    {
+        $this->seed(ProfilePerfectSeed::class);
+
+        $profileId = session()->get('profileId');
+
+        $response = $this->clubService->getTheList($profileId);
+
+        $this->assertIsObject($response);
+
+        $response = collect($response);
+
+        $this->assertTrue($response->count() > 2);
+        $this->assertObjectHasProperty("name", $response->first());
+        $this->assertObjectHasProperty("region", $response->first());
     }
 
 

@@ -80,6 +80,44 @@ class ClubService
     }
 
 
+    public function getTheList(int $profileId): object
+    {
+        try {
+            $club = DB::table('clubs')
+                ->join('divisions', 'divisions.id', '=', 'clubs.division_id')
+                ->select(
+                    'clubs.id',
+                    'clubs.name',
+                    'clubs.division_id',
+                    'divisions.region',
+                    'divisions.country',
+                    'divisions.name as division_name',
+                    'divisions.level',
+                    'clubs.created_at',
+                    'clubs.updated_at',
+                )
+                ->where('clubs.profile_id', $profileId)
+                ->orderBy('divisions.level')
+                ->get();
+
+            Log::info('Get the list clubs success', [
+                'profile_id' => $profileId,
+                'path' => 'App\Service\ClubService'
+            ]);
+
+            return $club;
+        } catch (\Throwable $th) {
+            Log::info('Get the list clubs failed', [
+                'profile_id' => $profileId,
+                'path' => 'App\Service\ClubService',
+                'message' => $th->getMessage()
+            ]);
+
+            return collect([]);
+        }
+    }
+
+
     public function delete(int $profileId): void
     {
         Club::where('profile_id', $profileId)
