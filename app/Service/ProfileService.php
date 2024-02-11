@@ -27,9 +27,15 @@ class ProfileService
 
     public function getById(int $profileId): Object
     {
-        $profile = Profile::select('id', 'name', 'managed_club', 'created_at', 'updated_at')
-            ->where('id', $profileId)
+        $profile = DB::table('profiles')
+            ->leftJoin('clubs', 'profiles.managed_club', '=', 'clubs.id')
+            ->select('profiles.id', 'profiles.name', 'profiles.managed_club', 'clubs.division_id', 'clubs.name as club_name', 'profiles.created_at', 'profiles.updated_at')
+            ->where('profiles.id', $profileId)
             ->first();
+
+        // $profile = Profile::select('id', 'name', 'managed_club', 'created_at', 'updated_at')
+        //     ->where('id', $profileId)
+        //     ->first();
 
         Log::info('get by id success', [
             'profile_id' => $profileId,

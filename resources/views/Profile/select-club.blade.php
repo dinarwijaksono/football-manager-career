@@ -27,13 +27,12 @@
             <main>
 
                 <section class="title">
-                    <h1>Pilih Klub</h1>
+                    <h1>Pilih Klub </h1>
                 </section>
 
                 <section>
                     <table style="width: 850px">
                         <tbody>
-
 
                             @for ($i = 0; $i < 5; $i++)
                                 <tr class="p-1 bg-green-100 shadow flex mb-2">

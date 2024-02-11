@@ -43,8 +43,11 @@ class ProfileServiceTest extends TestCase
 
         $response = $this->profileService->getById($profile->id);
 
+        // var_dump($response);
+
         $this->assertIsObject($response);
         $this->assertEquals($response->name, $profile->name);
+        $this->assertEquals($response->managed_club, $profile->managed_club);
     }
 
 
